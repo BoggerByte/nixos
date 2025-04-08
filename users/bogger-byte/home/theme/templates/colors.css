@@ -1,0 +1,9 @@
+:root {
+    <* for name, value in custom *>
+    --{{name | replace: "_", "-"}}: {{value}}
+    <* endfor *>
+
+    <* for name, value in colors *>
+    --{{name | replace: "_", "-"}}: {{value.default.hex}};
+    <* endfor *>
+}

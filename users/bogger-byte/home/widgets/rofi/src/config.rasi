@@ -1,0 +1,20 @@
+@theme 'launcher'
+
+configuration {
+	/*---------- General setting ----------*/
+	modes: "drun,run,window,ssh,emoji";
+	font: "mono 12";
+	show-icons: true;
+	case-sensitive: false;
+
+	/*---------- History and Sorting ----------*/
+	disable-history: false;
+	sorting-method: "normal";
+	max-history-size: 25;
+
+	/*---------- Other settings ----------*/
+    timeout {
+      action: "kb-cancel";
+      delay:  0;
+    }
+}

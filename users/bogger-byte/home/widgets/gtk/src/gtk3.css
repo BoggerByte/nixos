@@ -1,0 +1,95 @@
+@import "colors.css";
+
+
+:root {
+    --window-bg-color: var(--background);
+    --window-fg-color: var(--on-background);
+    --view-bg-color: var(--inverse-on-surface);
+    --view-fg-color: var(--window-fg-color);
+    --accent-bg-color: var(--inverse-primary);
+    --accent-fg-color: var(--on-primary);
+    --accent-color: var(--accent-bg-color);
+    --headerbar-bg-color: var(--on-secondary-fixed-variant);
+    --headerbar-backdrop-color: var(--background);
+    --headerbar-fg-color: var(--window-fg-color);
+    --popover-bg-color: var(--headerbar-bg-color);
+    --popover-fg-color: var(--view-fg-color);
+    --dialog-bg-color: var(--popover-bg-color);
+    --dialog-fg-color: var(--popover-fg-color);
+    --card-bg-color: var(--popover-bg-color);
+    --card-fg-color: var(--window-fg-color);
+    --sidebar-bg-color: var(--headerbar-bg-color);
+    --sidebar-fg-color: var(--window-fg-color);
+    --sidebar-backdrop-color: var(--window-bg-color);
+    --sidebar-shade-color: rgba(0, 0, 0, var(--transparency-high));
+
+    --destructive-bg-color: var(--error-container);
+    --destructive-fg-color: var(--on-error-container);
+    --success-bg-color: var(--on-primary-fixed);
+    --success-fg-color: var(--on-primary-fixed-variant);
+    --warning-bg-color: var(--on-tertiary);
+    --warning-fg-color: var(--on-secondary);
+    --error-bg-color: var(--error);
+    --error-fg-color: var(--on-error);
+
+    --headerbar-border-color: var(--on-surface-variant);
+    --headerbar-shade-color: rgba(0, 0, 0, var(--transparency));
+    --headerbar-darker-shade-color: rgba(0, 0, 0, var(--transparency-low));
+    --sidebar-border-color: var(--on-surface-variant);
+    --secondary-sidebar-bg-color: var(--on-secondary-fixed);
+    --secondary-sidebar-fg-color: var(--on-secondary);
+    --secondary-sidebar-backdrop-color: var(--sidebar-backdrop-color);
+    --secondary-sidebar-border-color: var(--sidebar-border-color);
+
+    --card-shade-color: rgba(0, 0, 0, var(--transparency));
+    --popover-shade-color: var(--card-shade-color);
+    --thumbnail-bg-color: var(--view-bg-color);
+    --thumbnail-fg-color: var(--view-fg-color);
+    --shade-color: rgba(0, 0, 0, var(--transparency));
+    --scrollbar-outline-color: var(--on-surface-variant);
+}
+
+/* Decorations */
+decoration {
+    box-shadow: 0 3px 12px 1px rgba(0, 0, 0, var(--transparency-high)),
+        0 0 0 1px var(--headerbar-border-color);
+}
+
+decoration:backdrop {
+    box-shadow: 0 3px 12px 1px transparent,
+        0 2px 6px 2px rgba(0, 0, 0, var(--transparency-low)),
+        0 0 0 1px var(--headerbar-border-color);
+}
+
+.tiled decoration {
+    box-shadow: 0 0 0 1px var(--headerbar-border-color),
+        0 0 0 20px transparent;
+}
+
+button.titlebutton.close {
+    background-color: var(--error-bg-color);
+}
+
+button.titlebutton.close:hover {
+    background-color: var(--error-container);
+}
+
+button.titlebutton.maximize {
+    background-color: var(--success-bg-color);
+}
+
+button.titlebutton.maximize:hover {
+    background-color: var(--success-fg-color);
+}
+
+button.titlebutton.minimize {
+    background-color: var(--warning-bg-color);
+}
+
+button.titlebutton.minimize:hover {
+    background-color: var(--warning-fg-color);
+}
+
+button.titlebutton:active {
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, var(--transparency));
+}

@@ -1,0 +1,165 @@
+@import url('./variables.css');
+
+* {
+    font-size: 13px;
+    font-family: "JetBrains Mono Nerd Font";
+}
+
+window#waybar {
+    all: unset;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 5px;
+    margin: 10px 10px 0 10px;
+    border-radius: 10px;
+    background: @surface_container;
+}
+
+tooltip {
+    background: @surface_container_lowest;
+    color: @on_surface;
+    border-radius: 10px;
+}
+
+#clock {
+    padding: 3px 10px;
+    font-weight: 800;
+    border-radius: 8px;
+    color: @on_primary;
+    background: @primary;
+}
+
+#mpris {
+    padding: 3px 10px;
+    font-weight: 800;
+    color: @on_surface;
+    margin-left: 5px;
+}
+
+#workspaces button {
+    all: unset;
+    padding: 0px 6px;
+    color: @on_surface;
+    border-radius: 8px;
+    font-weight: 800;
+    transition: all .2s ease;
+    margin: 0 7px;
+}
+
+#workspaces button.empty {
+    color: alpha(@on_surface, 0.3);
+}
+
+#workspaces button:not(.empty) {
+    background: alpha(@secondary, 0.08);
+    color: @on_surface;
+}
+
+#workspaces button.active {
+    background: @tertiary;
+    color: @on_tertiary;
+}
+
+#language {
+    padding: 0px 5px;
+    margin: 0 5px;
+}
+
+#bluetooth {
+    padding: 0 5px;
+    transition: all .3s ease;
+    color: @on_surface;
+    background: alpha(@secondary, 0.1);
+    border-radius: 8px 0 0 8px;
+}
+
+#network {
+    padding: 0px 5px 0px 3px;
+    transition: all .3s ease;
+    color: @on_surface;
+    background: alpha(@secondary, 0.1);
+}
+
+#battery {
+    padding: 0 5px 0 8px;
+    transition: all .3s ease;
+    color: @on_surface;
+    background: alpha(@secondary, 0.1);
+    border-radius: 0 8px 8px 0;
+}
+
+#battery.charging {
+    color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#group-expand {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#custom-expand {
+    padding: 0px 5px;
+    color: alpha(@on_surface, 0.5);
+    transition: all .3s ease;
+}
+
+#custom-expand:hover {
+    color: @on_surface;
+}
+
+#cpu,
+#memory,
+#temperature {
+    background: alpha(@secondary, 0.1);
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @on_surface;
+}
+#cpu {
+    border-radius: 8px 0 0 8px;
+}
+#memory {
+    padding: 0 8px 0 5px;
+}
+#temperature {
+    border-radius: 0 8px 8px 0;
+}
+
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#custom-power {
+    padding: 3px 13px 3px 10px;
+    background: @tertiary;
+    color: @on_tertiary;
+    border-radius: 8px;
+    margin-left: 10px;
+}

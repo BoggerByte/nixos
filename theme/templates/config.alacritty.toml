@@ -1,0 +1,31 @@
+[window]
+opacity = {{custom.transparency}}
+padding = { x = {{ custom.spacing_2 }}, y = {{ custom.spacing_2 }} }
+
+[colors.primary]
+background = "0x{{colors.surface.default.hex_stripped}}"
+foreground = "0x{{colors.on_surface.default.hex_stripped}}"
+
+[colors.normal]
+black   = "0x{{harmonized_colors.black.hex_stripped}}"
+white   = "0x{{harmonized_colors.white.hex_stripped}}"
+blue    = "0x{{harmonized_colors.blue.hex_stripped}}"
+cyan    = "0x{{harmonized_colors.cyan.hex_stripped}}"
+green   = "0x{{harmonized_colors.green.hex_stripped}}"
+magenta = "0x{{harmonized_colors.magenta.hex_stripped}}"
+red     = "0x{{harmonized_colors.red.hex_stripped}}"
+yellow  = "0x{{harmonized_colors.yellow.hex_stripped}}"
+
+[colors.bright]
+black   = "0x{{harmonized_colors.black.hex_stripped}}"
+white   = "0x{{harmonized_colors.white.hex_stripped}}"
+blue    = "0x{{harmonized_colors.blue.hex_stripped}}"
+cyan    = "0x{{harmonized_colors.cyan.hex_stripped}}"
+green   = "0x{{harmonized_colors.green.hex_stripped}}"
+magenta = "0x{{harmonized_colors.magenta.hex_stripped}}"
+red     = "0x{{harmonized_colors.red.hex_stripped}}"
+yellow  = "0x{{harmonized_colors.yellow.hex_stripped}}"
+
+[colors.cursor]
+cursor = "0x{{colors.inverse_surface.default.hex_stripped}}"
+text   = "0x{{colors.inverse_on_surface.default.hex_stripped}}"
