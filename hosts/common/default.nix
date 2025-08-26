@@ -21,7 +21,7 @@
   
   services.envfs.enable = true;
   environment.sessionVariables = {
-    FLAKE = "/etc/nixos";
+    NH_FLAKE = "/etc/nixos";
   };
   environment.etc = {
     "nixos" = {

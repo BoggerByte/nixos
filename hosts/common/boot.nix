@@ -1,22 +1,23 @@
 { config, pkgs, ... }:
 
 {
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
     minegrub-world-sel = {
       enable = true;
-      customIcons = [{
-        name = "nixos";
-        lineTop = "NixOS (01/12/1970, 00:00)";
-        lineBottom = "Survival Mode, No Cheats, Version: ${config.system.nixos.release}";
-        imgName = "nixos";
-      }];
+      customIcons = [
+        {
+          name = "nixos";
+          lineTop = "NixOS (01/12/1970, 00:00)";
+          lineBottom = "Creative Mode, Cheats, Version: ${config.system.nixos.release}";
+          imgName = "nixos";
+        }
+      ];
     };
   };
-
-  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.plymouth = {
     enable = true;
@@ -26,8 +27,17 @@
     '';
   };
   environment.systemPackages = with pkgs; [ plymouth-minecraft-theme ];
-  boot.kernelParams = [ "quiet" ];
 
   boot.initrd.systemd.enable = true;
+
+  # Silent boot
+  boot.consoleLogLevel = 3;
   boot.initrd.verbose = false;
+  boot.kernelParams = [ 
+    "quiet"
+    "splash"
+    "boot.shell_on_fail"
+    "udev.log_priority=3"
+    "rd.systemd.show_status=auto"
+  ];
 }

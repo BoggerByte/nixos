@@ -1,24 +1,18 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 
 {
   imports = [
-    inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.common-pc-ssd
     inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-nvidia
+    inputs.hardware.nixosModules.common-gpu-amd
     ./hardware-configuration.nix
     ./networking.nix
     ./nix.nix
-    ./nvidia.nix
-    ./swap.nix
 
     (inputs.self + "/hosts/common")
     (inputs.self + "/users/bogger-byte")
   ];
 
   services.xserver.enable = false;
-  
-  hardware.brillo.enable = true;
-  
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 }

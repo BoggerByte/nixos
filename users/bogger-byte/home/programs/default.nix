@@ -16,6 +16,10 @@
     openssl
     dconf
 
+    lazydocker
+    docker-slim
+    ngrok
+
     brave
     telegram-desktop
     zoom-us
@@ -23,11 +27,12 @@
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
     jetbrains.webstorm
-    jetbrains.clion
+    jetbrains.goland
 
     libnotify
     gparted
 
+    rustup
     bun
     nodejs_20 # LTS
     jdk21_headless # LTS

@@ -11,6 +11,12 @@
   home.sessionVariables.SDL_VIDEODRIVER = "wayland";
   home.sessionVariables.CLUTTER_BACKEND = "wayland";
   home.sessionVariables.NIXOS_OZONE_WL = "1";
+  home.sessionVariables.LIBVA_DRIVER_NAME = "nvidia";
+  home.sessionVariables.__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  home.sessionVariables.GBM_BACKEND = "nvidia-drm";
+  home.sessionVariables.AQ_DRM_DEVICES = "/dev/dri/card2:/dev/dri/card1";
+  home.sessionVariables.WLR_DRM_DEVICES = "/dev/dri/card2:/dev/dri/card1";
+  home.sessionVariables.NVD_BACKEND = "direct";
 
   wayland.windowManager.hyprland.systemd.enable = false; # using uwsm
   wayland.windowManager.hyprland.enable = true;
@@ -20,6 +26,7 @@
     source = [
       "./hyprland/autoexec.conf"
       "./system.conf"
+      "./hyprland/monitors.conf"
       "./hyprland/colors.conf"
       "./hyprland/default.conf"
     ];
@@ -35,7 +42,8 @@
   '';
   home.file."${config.xdg.configHome}/hypr/hyprland/monitors.conf".text = ''
     # https://wiki.hyprland.org/Configuring/Monitors/
-    monitor = ,preferred,auto,auto
+    monitor = eDP-1   , 1920x1080@144, 0x0   , 1
+    monitor = HDMI-A-1, 2560x1440@240, 1920x0, 1
   '';
   home.file."${config.xdg.configHome}/hypr/hyprland/colors.conf".text = ''
     source = ${config.theme.md3.live.files}/theme/colors.hyprland.conf

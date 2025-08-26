@@ -9,6 +9,6 @@
   #   ];
   #   theme = sddm-astronaut-theme-name;
   # };
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.banner = "Welcome! <3";
+  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.banner = "Welcome! <3";
 }

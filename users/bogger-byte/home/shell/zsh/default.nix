@@ -13,22 +13,23 @@ in
       highlight = "fg=blue";
     };
 
-    initExtraFirst = ''
-      bindkey '^[' history-search-backword
-      bindkey '^]' history-search-forward
+    initContent = let 
+      earlyInit = lib.mkBefore ''
+        bindkey '^[' history-search-backword
+        bindkey '^]' history-search-forward
 
-      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-      
-      zstyle ':completion:*' menu no
-      zstyle ':completion:*:descriptions' format '[%d]'
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'colorsls $realpath'
-    '';
-
-    initExtra = ''
-      ${pkgs.pfetch-rs}/bin/pfetch
-    '';
+        zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+        
+        zstyle ':completion:*' menu no
+        zstyle ':completion:*:descriptions' format '[%d]'
+        zstyle ':fzf-tab:complete:cd:*' fzf-preview 'colorsls $realpath'
+      '';
+      exitInit = lib.mkAfter ''
+        ${pkgs.pfetch-rs}/bin/pfetch
+      '';
+    in lib.mkMerge [earlyInit exitInit];
 
     shellAliases = {
       ls = "${pkgs.colorls}/bin/colorls";
@@ -55,11 +56,6 @@ in
         rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
         hash = "sha256-087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
       };
-    }
-    {
-      name = "zsh-thefuck";
-      src = pkgs.thefuck;
-      file = "zsh-thefuck.plugin.zsh";
     }
   ];
 
@@ -108,5 +104,11 @@ in
     options = [
       "--cmd cd"
     ];
+  };
+
+  programs.direnv.enable = true;
+  programs.direnv = {
+    nix-direnv.enable = true;
+    enableZshIntegration = true;
   };
 }
