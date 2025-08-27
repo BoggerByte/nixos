@@ -4,7 +4,7 @@
   inputs = {
     # nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
@@ -44,6 +44,15 @@
           inherit system specialArgs;
           modules = [
             ./hosts/victus
+            inputs.home-manager.nixosModules.default
+            inputs.minegrub-world-sel-theme.nixosModules.default
+          ];
+        };
+        # pc for work
+        umbra = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./hosts/umbra
             inputs.home-manager.nixosModules.default
             inputs.minegrub-world-sel-theme.nixosModules.default
           ];

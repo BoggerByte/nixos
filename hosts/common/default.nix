@@ -3,7 +3,8 @@
 {
   imports = [
     (inputs.self + "/overlays")
-
+    
+    ./nix.nix
     ./boot.nix
     ./locale.nix
     ./sound.nix
@@ -12,23 +13,4 @@
     ./bluetooth.nix
     ./display-manager.nix
   ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  users.groups.nixosmanager = {};
-  
-  services.envfs.enable = true;
-  environment.sessionVariables = {
-    NH_FLAKE = "/etc/nixos";
-  };
-  environment.etc = {
-    "nixos" = {
-      source = "/etc/nixos";
-      user = "root";
-      group = "nixosmanager";
-      mode = "rwxrwxr--";
-    };
-  };
 }

@@ -12,7 +12,6 @@
     (inputs.self + "/hosts/common")
     (inputs.self + "/users/bogger-byte")
   ];
-
-  services.xserver.enable = false;
+  
   system.stateVersion = "25.05";
 }

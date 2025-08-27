@@ -19,10 +19,11 @@ in
   users.users.${username} = {
     isNormalUser = true;
     description = "Nikita Troshnev";
-    extraGroups = [ "networkmanager" "wheel" "video" "nixosmanager" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "nixos-admins" ];
   };
 
   systemd.packages = [ pkgs.dconf ];
+  services.envfs.enable = true;
 
   home-manager.backupFileExtension = "hm-backup";
   home-manager.useGlobalPkgs = true;
