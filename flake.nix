@@ -28,7 +28,10 @@
 
     matugen.url = "github:/InioX/Matugen?ref=v2.2.0";
     minegrub-world-sel-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix4vscode = {
       url = "github:nix-community/nix4vscode";
@@ -42,7 +45,6 @@
       system = "x86_64-linux";
       overlays = [
         inputs.nix4vscode.overlays.default
-        (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.specific; })
       ];
       modules = [
         inputs.home-manager.nixosModules.default
@@ -54,7 +56,7 @@
         specialArgs = { inherit inputs; };
         modules = modules ++ [
           hostConfigPath
-          ({ config, ... }: { nixpkgs.overlays = overlays; })
+          (_: { nixpkgs.overlays = overlays; })
         ];
       };
     in

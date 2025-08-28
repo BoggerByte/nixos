@@ -12,10 +12,39 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-    padding: 5px;
+    padding: 1px;
     margin: 10px 10px 0 10px;
     border-radius: 10px;
-    background: @surface_container;
+}
+
+.modules-left {
+    background: linear-gradient(
+        to top left,
+        @surface_container_high 40%, 
+        @primary 100%
+    );
+}
+.modules-right {
+    background: linear-gradient(
+        to top right,
+        @surface_container_high 40%, 
+        @primary 100%
+    );
+}
+.modules-center {
+    background: linear-gradient(
+        to top,
+        @surface_container_high 70%, 
+        @primary 100%
+    );
+}
+
+#left,
+#center,
+#right {
+    padding: 4px;
+    border-radius: 9px;
+    background: @surface;
 }
 
 tooltip {

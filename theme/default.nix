@@ -53,6 +53,7 @@ in
         "2" = "10";
         "3" = "15";
       };
+      texture = "0.3";
     };
 
     templates =  builtins.listToAttrs (map (filename: {

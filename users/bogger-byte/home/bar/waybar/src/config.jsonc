@@ -3,9 +3,15 @@
     "position": "top",
     "reload_style_on_change": true,
     "modules-left": [
-        "clock",
-        "mpris"
+        "group/left"
     ],
+    "group/left": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock",
+            "mpris"
+        ]
+    },
     "clock": {
         "format": "{:%b %d • %H:%M} ",
         "interval": 1,
@@ -41,8 +47,14 @@
         "tooltip-format-paused": "{status_icon} {dynamic} {length}"
     },
     "modules-center": [
-        "hyprland/workspaces"
+        "group/center"
     ],
+    "group/center": {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/workspaces"
+        ]
+    },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -72,12 +84,18 @@
         "move-to-monitor": true
     },
     "modules-right": [
-        "group/expand",
-        "tray",
-        "hyprland/language",
-        "battery",
-        "custom/power"
+        "group/right"
     ],
+    "group/right": {
+        "orientation": "horizontal",
+        "modules": [
+            "group/expand",
+            "tray",
+            "hyprland/language",
+            "battery",
+            "custom/power"
+        ]
+    },
     "hyprland/language": {
         "format-en": "en",
         "format-ru": "ru"
