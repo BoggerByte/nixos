@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ pkgs, ... }: 
 
 {
   programs.git.enable = true;
@@ -6,4 +6,8 @@
     userName = "BoggerByte";
     userEmail = "nik.troshnev@gmail.com";
   };
+
+  home.packages = with pkgs; [
+    gh
+  ];
 }

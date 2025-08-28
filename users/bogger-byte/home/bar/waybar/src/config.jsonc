@@ -75,8 +75,6 @@
         "group/expand",
         "tray",
         "hyprland/language",
-        "bluetooth",
-        "network",
         "battery",
         "custom/power"
     ],

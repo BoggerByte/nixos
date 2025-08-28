@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, ... }:
 let
   theme = config.theme.md3.contents;
 in
@@ -6,10 +6,6 @@ in
   imports = [ 
     inputs.spicetify-nix.homeManagerModules.default
   ];
-
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-  #   "spotify"
-  # ];
 
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};

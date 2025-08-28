@@ -29,34 +29,41 @@
     matugen.url = "github:/InioX/Matugen?ref=v2.2.0";
     minegrub-world-sel-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      overlays = [
+        inputs.nix4vscode.overlays.default
+        (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.specific; })
+      ];
+      modules = [
+        inputs.home-manager.nixosModules.default
+        inputs.minegrub-world-sel-theme.nixosModules.default
+      ];
+
+      mkHost = hostConfigPath: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = modules ++ [
+          hostConfigPath
+          ({ config, ... }: { nixpkgs.overlays = overlays; })
+        ];
+      };
     in
     {
-      nixosConfigurations = {
-        # laptop for work
-        victus = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            ./hosts/victus
-            inputs.home-manager.nixosModules.default
-            inputs.minegrub-world-sel-theme.nixosModules.default
-          ];
-        };
-        # pc for work
-        umbra = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            ./hosts/umbra
-            inputs.home-manager.nixosModules.default
-            inputs.minegrub-world-sel-theme.nixosModules.default
-          ];
-        };
-      };
+      nixosConfigurations = 
+      let
+        hostsDir = ./hosts;
+        hostNames = builtins.filter (name: name != "common") (builtins.attrNames (builtins.readDir hostsDir));
+      in 
+      builtins.listToAttrs (map (hostName: { name = hostName; value = mkHost (hostsDir + "/${hostName}"); }) hostNames);
     };
 }

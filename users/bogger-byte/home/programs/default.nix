@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -8,19 +8,13 @@
     ./spotify.nix
     ./alacritty.nix
     ./mako.nix
-    ./clipboard.nix
+    ./vscode
+    ./zen-browser
   ];
 
   home.packages = with pkgs; [
-    nh
-    openssl
-    dconf
-
-    lazydocker
-    docker-slim
-    ngrok
-
     brave
+    google-chrome
     telegram-desktop
     zoom-us
 
@@ -29,33 +23,16 @@
     jetbrains.webstorm
     jetbrains.goland
 
-    libnotify
-    gparted
-
-    rustup
-    bun
-    nodejs_20 # LTS
-    jdk21_headless # LTS
-    python312
-    gnumake
-
-    nixd
-    nixfmt-rfc-style
-    hyprls
-
-    networkmanagerapplet
-    gnome-network-displays
-
-    inputs.zen-browser.packages."${system}".default
+    lazydocker
+    docker-slim
+    ngrok
   ];
 
   programs.zathura.enable = true;
-  programs.vscode.enable = true;
   services.polkit-gnome.enable = true;
 
-  programs.poetry.enable = true;
-  programs.pyenv = {
+  services.ollama = {
     enable = true;
-    enableZshIntegration = true;
+    acceleration = "rocm";
   };
 }

@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./nix.nix
+    ./amd.nix
 
     (inputs.self + "/hosts/common")
     (inputs.self + "/users/bogger-byte")
